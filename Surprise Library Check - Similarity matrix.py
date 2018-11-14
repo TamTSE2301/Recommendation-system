@@ -40,10 +40,10 @@ algo.sim[0]
 from scipy.stats.stats import pearsonr
 
 #We select Person similarity
-def pearson_sim(v1, v2, minSimSupport=None):
+def pearson_sim(v1, v2, min_support=None):
     #Define common ratings
     indexList = (v1[(~pd.isnull(v1)) & (~pd.isnull(v2))]).index 
-    if len(indexList) == 0 or (minSimSupport is not None and len(indexList) < minSimSupport):
+    if len(indexList) == 0 or (minSimSupport is not None and len(indexList) < min_support):
         sim = 0
     else:
         sim, pvalue = pearsonr(v1[indexList], v2[indexList])
